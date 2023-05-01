@@ -5,18 +5,24 @@ from django.db import models
 class Category(models.Model):
     name = models.CharField(max_length=100)
     
+    def __str__(self):
+        return self.name
     
 class Location(models.Model):
     name = models.CharField(max_length=100)
     
+    def __str__(self):
+        return self.name
     
 class StorageType(models.Model):
     name = models.CharField(max_length=100)
     # StorageType can be in many Locations  
-    locations = models.ManyToManyField(Location)
+    location = models.ForeignKey(Location, on_delete=models.PROTECT, related_name='storage_type') 
     # Date & Time is updated as the database is updated
     date_organized = models.DateTimeField(auto_now=True)
     
+    def __str__(self):
+        return self.name
 
 class Object(models.Model):
     name = models.CharField(max_length=100)
@@ -31,6 +37,8 @@ class Object(models.Model):
     # A single storage type is specified
     storage_type = models.ForeignKey(StorageType, on_delete=models.PROTECT, related_name='objects')
 
+    def __str__(self):
+        return self.name
     
 # **** ADD the following if we want to add a DateTime field do the StorageType Field ****
 

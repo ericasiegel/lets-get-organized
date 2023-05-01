@@ -16,13 +16,13 @@ values
   (13, 'Sports');
 
 insert into
-  inventory_storagetype (id, name, date_organized)
+  inventory_storagetype (id, name, date_organized, location_id)
 values
-  (1, 'Pantry','2020-07-07 00:00:00'),
-  (2, 'Cabinet','2020-07-07 00:00:00'),
-  (3, 'Jewelry Box','2020-07-07 00:00:00'),
-  (4, 'Closet','2020-07-07 00:00:00'),
-  (5, 'Bookshelf','2020-07-07 00:00:00');
+  (1, 'Pantry','2020-07-07 00:00:00', 3),
+  (2, 'Cabinet','2020-07-07 00:00:00', 5),
+  (3, 'Jewelry Box','2020-07-07 00:00:00', 2),
+  (4, 'Closet','2020-07-07 00:00:00', 4),
+  (5, 'Bookshelf','2020-07-07 00:00:00', 2);
 
 insert into
   inventory_location (id, name)
@@ -32,16 +32,6 @@ values
   (3, 'Bedroom'),
   (4, 'Living Room'),
   (5, 'Study');
-
-insert into
-  inventory_storagetype_locations (id, storagetype_id, location_id)
-values
-  (1, 3, 3),
-  (2, 2, 4),
-  (3, 1, 4),
-  (4, 5, 3),
-  (5, 1, 3);
-
 
 insert into
   inventory_object (
@@ -71,13 +61,13 @@ values
     5, 'dishwasher', 289, 'Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.', '2020-08-18 00:00:00', 3, 7, 5
   ),
   (
-    6, 'bed', 475, 'In hac habitasse platea dictumst.', '2020-10-25 00:00:00', 2, 9, 3
+    6, 'picture', 475, 'In hac habitasse platea dictumst.', '2020-10-25 00:00:00', 2, 9, 3
   ),
   (
     7, 'rug', 614, 'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est.', '2020-08-08 00:00:00', 2, 7, 2
   ),
   (
-    8, 'fridge', 797, 'Nulla suscipit ligula in lacus.', '2021-06-03 00:00:00', 4, 7, 5
+    8, 'microwave', 797, 'Nulla suscipit ligula in lacus.', '2021-06-03 00:00:00', 4, 7, 5
   ),
   (
     9, 'stove', 895, 'Morbi a ipsum. Integer a nibh.', '2021-03-03 00:00:00', 3, 7, 5
@@ -89,25 +79,25 @@ values
     11, 'mirror', 162, 'Morbi non quam nec dui luctus rutrum. Nulla tellus.', '2021-01-19 00:00:00', 1, 7, 3
   ),
   (
-    12, 'fridge', 743, 'Nullam molestie nibh in lectus. Pellentesque at nulla.', '2020-12-28 00:00:00', 1, 9, 5
+    12, 'wine', 743, 'Nullam molestie nibh in lectus. Pellentesque at nulla.', '2020-12-28 00:00:00', 1, 9, 5
   ),
   (
-    13, 'rug', 293, 'Aenean sit amet justo. Morbi ut odio.', '2020-07-07 00:00:00', 4, 11, 5
+    13, 'beer', 293, 'Aenean sit amet justo. Morbi ut odio.', '2020-07-07 00:00:00', 4, 11, 5
   ),
   (
-    14, 'sofa', 605, 'Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.', '2020-08-29 00:00:00', 2, 3, 5
+    14, 'hat', 605, 'Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.', '2020-08-29 00:00:00', 2, 3, 5
   ),
   (
-    15, 'mirror', 470, 'Nunc rhoncus dui vel sem.', '2020-07-25 00:00:00', 1, 9, 4
+    15, 't-shirt', 470, 'Nunc rhoncus dui vel sem.', '2020-07-25 00:00:00', 1, 9, 4
   ),
   (
-    16, 'lamp', 532, 'Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.', '2020-07-16 00:00:00', 3, 6, 4
+    16, 'computer', 532, 'Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.', '2020-07-16 00:00:00', 3, 6, 4
   ),
   (
-    17, 'lamp', 888, 'Donec ut dolor.', '2021-03-05 00:00:00', 4, 2, 1
+    17, 'speaker', 888, 'Donec ut dolor.', '2021-03-05 00:00:00', 4, 2, 1
   ),
   (
-    18, 'lamp', 642, 'Suspendisse accumsan tortor quis turpis. Sed ante.', '2020-07-26 00:00:00', 1, 2, 4
+    18, 'tennis_shoes', 642, 'Suspendisse accumsan tortor quis turpis. Sed ante.', '2020-07-26 00:00:00', 1, 2, 4
   ),
   (
     19, 'table', 245, 'Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl.', '2021-05-14 00:00:00', 5, 5, 5
