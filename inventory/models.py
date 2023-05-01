@@ -25,11 +25,11 @@ class Object(models.Model):
     # Date & Time is updated as the database is updated
     last_updated = models.DateTimeField(auto_now=True) 
     # Object belongs to multiple Categories and a Category can have multiple Objects
-    category = models.ManyToManyField(Category) 
+    category = models.ForeignKey(Category, on_delete=models.PROTECT, related_name='objects', null=True) 
     # Multiple locations can be assigned to one object 
-    locations = models.ManyToManyField(Location) 
+    location = models.ForeignKey(Location, on_delete=models.PROTECT, related_name='objects') 
     # A single storage type is specified
-    storage_type = models.ForeignKey(StorageType, on_delete=models.CASCADE)
+    storage_type = models.ForeignKey(StorageType, on_delete=models.PROTECT, related_name='objects')
 
     
 # **** ADD the following if we want to add a DateTime field do the StorageType Field ****
