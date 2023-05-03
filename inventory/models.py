@@ -25,7 +25,7 @@ class Location(models.Model):
 class StorageType(models.Model):
     name = models.CharField(max_length=100)
     # StorageType can be in many Locations  
-    location = models.ForeignKey(Location, on_delete=models.PROTECT, related_name='storage_type') 
+    location = models.ForeignKey(Location, on_delete=models.CASCADE, related_name='storage_type') 
     # Date & Time is updated as the database is updated
     date_organized = models.DateTimeField(auto_now=True)
     
@@ -43,11 +43,11 @@ class Object(models.Model):
     # Date & Time is updated as the database is updated
     last_updated = models.DateTimeField(auto_now=True) 
     # Object belongs to multiple Categories and a Category can have multiple Objects
-    category = models.ForeignKey(Category, on_delete=models.PROTECT, related_name='objects', null=True) 
+    category = models.ForeignKey(Category, on_delete=models.PROTECT, related_name='object_categories', null=True) 
     # Multiple locations can be assigned to one object 
-    location = models.ForeignKey(Location, on_delete=models.PROTECT, related_name='objects') 
+    location = models.ForeignKey(Location, on_delete=models.PROTECT, related_name='object_locations') 
     # A single storage type is specified
-    storage_type = models.ForeignKey(StorageType, on_delete=models.PROTECT, null=True, blank=True, related_name='objects')
+    storage_type = models.ForeignKey(StorageType, on_delete=models.PROTECT, null=True, blank=True, related_name='object_storage_types')
 
     def __str__(self):
         return self.name

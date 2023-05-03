@@ -1,8 +1,13 @@
 from django.urls import path
 
+from rest_framework.routers import SimpleRouter
+
 from . import views
 
-urlpatterns = [
-    path('objects/', views.object_list),
-    path('objects/<int:id>/', views.object_detail),
-]
+
+router = SimpleRouter()
+router.register('objects', views.ObjectViewSet)
+router.register('categories', views.CategoryViewSet)
+router.register('locations', views.LocationViewSet)
+
+urlpatterns = router.urls
