@@ -15,6 +15,9 @@ class ObjectViewSet(ModelViewSet):
     queryset = Object.objects.select_related('category', 'location', 'storage_type').all()
     serializer_class = ObjectSerlializer
     
+    def get_queryset(self):
+        return Object.objects.filter(storage_type_id=self.kwargs['storage_type_pk'])
+    
     def get_serializer_context(self):
         return {'request': self.request}
     
@@ -31,3 +34,10 @@ class LocationViewSet(ModelViewSet):
 class StorageTypeViewSet(ModelViewSet):
     queryset = StorageType.objects.all()
     serializer_class = StorageTypeSerializer
+    
+    def get_queryset(self):
+        return StorageType.objects.filter(location_id=self.kwargs['location_pk'])
+    
+    def get_serializer_context(self):
+        return {'location_id': self.kwargs['location_pk']}
+    
